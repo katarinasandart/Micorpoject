@@ -1,10 +1,10 @@
 package com.team2;
 
 public class Goal {
-    public int x;
-    public int y;
+    public float x;
+    public float y;
 
-    public Goal(int x, int y){
+    public Goal(float x, float y){
         this.x = x;
         this.y = y;
     }
