@@ -82,7 +82,7 @@ public class GameCourt {
             monster.setY(monster.getY());
         if(monster.getX() != person.getX())
             monster.setX(monster.getX());
-        writer.drawString(monster.getX(), monster.getY(),"\u2639");
+        writer.drawString((int)monster.getX(), (int)monster.getY(),"\u2639");
     }
 
     public void drawGoal() {
@@ -100,7 +100,7 @@ public class GameCourt {
         writer.drawString(0, 23, "################################################################################");
         screen.refresh();
     }
-    public void collideGameOver(int x, int y, int x2,int y2) {
+    public void collideGameOver(int x, int y, float x2,float y2) {
         if(x == x2 && y == y2 || x == 0 || x == 79 || y == 0 || y == 23)
             gameOver();
     }

@@ -1,10 +1,10 @@
 package com.team2;
 
 public class Monster {
-    public int x;
-    public int y;
-    private int moveMin = -1;
-    private int movePlus = 1;
+    public float x;
+    public float y;
+    private float moveMin = -0.5f;
+    private float movePlus = 0.5f;
     Person person;
 
 
@@ -15,22 +15,22 @@ public class Monster {
     }
 
 
-    public int getY() {
+    public float getY() {
         return y;
     }
 
-    public int getX() {
+    public float getX() {
         return x;
     }
 
-    public void setY(int y) {
+    public void setY(float y) {
         if (person.getY() >= getY())
             this.y = y + movePlus;
         else if (getY() > 1)
             this.y = y + moveMin;
     }
 
-    public void setX(int x) {
+    public void setX(float x) {
         if (person.getX() >= getX())
             this.x = x + movePlus;
         else if (getX() > 1)
