@@ -12,6 +12,8 @@ import com.googlecode.lanterna.terminal.TerminalSize;
 
 import java.nio.charset.Charset;
 
+import static com.googlecode.lanterna.input.Key.Kind.ArrowDown;
+
 public class GameCourt {
     Terminal terminal;
     Screen screen;
@@ -47,26 +49,22 @@ public class GameCourt {
             while (key == null);
             switch (key.getKind()) {
                 case ArrowDown:
-                    person.setY(person.getY() + 1);
-                    writer.drawString(person.getX(), person.getY(), "\u263A");
+                    drawPerson(0);
                     drawMonster();
                     drawGoal();
                     break;
                 case ArrowUp:
-                    person.setY(person.getY() - 1);
-                    writer.drawString(person.getX(), person.getY(), "\u263A");
+                    drawPerson(1);
                     drawMonster();
                     drawGoal();
                     break;
                 case ArrowLeft:
-                    person.setX(person.getX() - 1);
-                    writer.drawString(person.getX(), person.getY(), "\u263A");
+                    drawPerson(2);
                     drawMonster();
                     drawGoal();
                     break;
                 case ArrowRight:
-                    person.setX(person.getX() + 1);
-                    writer.drawString(person.getX(), person.getY(), "\u263A");
+                    drawPerson(3);
                     drawMonster();
                     drawGoal();
                     break;
@@ -78,6 +76,27 @@ public class GameCourt {
             collideWin(person.getX(), person.getY(), goal.getX(), goal.getY());
             screen.refresh();
 
+        }
+    }
+
+    public void drawPerson(int x) {
+        switch (x) {
+            case 0:
+                person.setY(person.getY() + 1);
+                writer.drawString(person.getX(), person.getY(), "\u263A");
+                break;
+            case 1:
+                person.setY(person.getY() - 1);
+                writer.drawString(person.getX(), person.getY(), "\u263A");
+                break;
+            case 2:
+                person.setX(person.getX() - 1);
+                writer.drawString(person.getX(), person.getY(), "\u263A");
+                break;
+            case 3:
+                person.setX(person.getX() + 1);
+                writer.drawString(person.getX(), person.getY(), "\u263A");
+                break;
         }
     }
 
