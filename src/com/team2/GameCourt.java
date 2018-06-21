@@ -86,6 +86,8 @@ public class GameCourt {
             }
             drawBorder();
             collideGameOver(person.getX(), person.getY(), monster.getX(), monster.getY());
+            collideGameOver(person.getX(), person.getY(), monster1.getX(), monster1.getY());
+            collideGameOver(person.getX(), person.getY(), monster2.getX(), monster2.getY());
             collideWin(person.getX(), person.getY(), goal.getX(), goal.getY());
             screen.refresh();
         }
