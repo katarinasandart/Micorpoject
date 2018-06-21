@@ -3,41 +3,41 @@ package com.team2;
 import java.util.Random;
 
 public class Goal {
-    public int x;
-    public int y;
-    private int moveMin = -1;
-    private int movePlus = 1;
+    public float x;
+    public float y;
+    private float moveMin = -0.5f;
+    private float movePlus = 0.5f;
     Person person;
 
     Random random = new Random();
 
 
     public Goal(Person person) {
-        this.x = random.nextInt(70);
-        this.y = random.nextInt(19);
+        this.x = random.nextInt(78);
+        this.y = random.nextInt(22);
         this.person = person;
     }
 
 
-    public int getY() {
+    public float getY() {
         return y;
     }
 
-    public int getX() {
+    public float getX() {
         return x;
     }
 
-    public void setY(int y) {
+    public void setY(float y) {
         if (person.getY() <= getY() && getY() < 22)
             this.y = y + movePlus;
-        else if (getY() > 1)
+        else if (getY() > 2)
             this.y = y + moveMin;
     }
 
-    public void setX(int x) {
+    public void setX(float x) {
         if (person.getX() <= getX() && getX() < 78)
             this.x = x + movePlus;
-        else if (getX() > 1)
+        else if (getX() > 2)
             this.x = x + moveMin;
     }
 }
