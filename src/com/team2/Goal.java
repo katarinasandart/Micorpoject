@@ -9,7 +9,7 @@ public class Goal {
 
 
     public Goal(Person person) {
-        this.x = 10;
+        this.x = 50;
         this.y = 10;
         this.person = person;
     }
@@ -31,7 +31,7 @@ public class Goal {
     }
 
     public void setX(int x) {
-        if (person.getX() <= getX() && getY() < 78)
+        if (person.getX() <= getX() && getX() < 78)
             this.x = x + movePlus;
         else if (getX() > 1)
             this.x = x + moveMin;
