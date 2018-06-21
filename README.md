@@ -1,1 +1,1 @@
-# Microproject creating a game
+# Microproject creating the Shaw Game
