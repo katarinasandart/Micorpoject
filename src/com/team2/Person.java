@@ -3,7 +3,8 @@ package com.team2;
 public class Person {
     public int x;
     public int y;
-    public Person(){
+
+    public Person() {
         this.x = 40;
         this.y = 10;
     }
@@ -17,10 +18,12 @@ public class Person {
     }
 
     public void setX(int x) {
-        this.x = x;
+        if (x >= 1 && x <= 78)
+            this.x = x;
     }
 
     public void setY(int y) {
-        this.y = y;
+        if (y >=1 && y <=22)
+            this.y = y;
     }
 }
