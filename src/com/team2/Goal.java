@@ -1,5 +1,7 @@
 package com.team2;
 
+import java.util.Random;
+
 public class Goal {
     public int x;
     public int y;
@@ -7,10 +9,12 @@ public class Goal {
     private int movePlus = 1;
     Person person;
 
+    Random random = new Random();
+
 
     public Goal(Person person) {
-        this.x = 50;
-        this.y = 10;
+        this.x = random.nextInt(70);
+        this.y = random.nextInt(19);
         this.person = person;
     }
 
