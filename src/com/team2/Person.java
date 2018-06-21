@@ -4,9 +4,9 @@ public class Person {
     public int x;
     public int y;
 
-    public Person() {
-        this.x = 40;
-        this.y = 10;
+    public Person(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
     public int getX() {

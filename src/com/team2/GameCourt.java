@@ -20,11 +20,12 @@ public class GameCourt {
     Screen screen;
     ScreenWriter writer;
     Person person;
-    Monster[] monsters = new Monster[10];
+    Monster[] monsters;
     Goal goal;
     int counter = 1;
 
     public void startGame() {
+        monsters = new Monster[10];
         person = new Person(40, 10);
         for(int i = 0; i < counter; i++)
             monsters[i] = new Monster(person);
@@ -38,7 +39,7 @@ public class GameCourt {
         writer = new ScreenWriter(screen);
         writer.setForegroundColor(Terminal.Color.CYAN);
         screen.setCursorPosition(null);
-        drawBorder();
+        drawStart();
         startGame();
     }
 
@@ -117,7 +118,7 @@ public class GameCourt {
                 monster.setY(monster.getY());
             if (monster.getX() != person.getX())
                 monster.setX(monster.getX());
-            writer.drawString((int) monster.getX(), (int) monster.getY(), "\u8546");
+            writer.drawString((int) monster.getX(), (int) monster.getY(), "\u2639");
         }
     }
 
@@ -130,7 +131,7 @@ public class GameCourt {
     }
 
     public void drawBorder() {
-        writer.drawString(0, 0, "################################################################################");
+        writer.drawString(0, 0, "#Level "+ counter+"########################################################################");
         for (int i = 1; i < 23; i++) {
             writer.drawString(0, i, "#");
             writer.drawString(79, i, "#");
@@ -169,5 +170,14 @@ public class GameCourt {
         writer.drawString(20, 12, "#          Level " + counter +"           #");
         writer.drawString(20, 13, "##############################");
         startGame();
+    }
+    public void drawStart() {
+        drawBorder();
+        writer.drawString(20, 10, "##############################");
+        writer.drawString(20, 11, "#         The Shaw Game      #");
+        writer.drawString(20, 12, "#   Press key to play level  #");
+        writer.drawString(20, 13, "#              1             #");
+        writer.drawString(20, 14, "##############################");
+        screen.refresh();
     }
 }
