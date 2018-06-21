@@ -29,10 +29,11 @@ public class GameCourt {
         goal = new Goal(person);
         screen.startScreen();
         writer = new ScreenWriter(screen);
-        writer.drawString(person.getX(), person.getY(),"\u263A");
+        writer.drawString(person.getX(), person.getY(), "\u263A");
         drawBorder();
     }
-    public void movement() throws InterruptedException{
+
+    public void movement() throws InterruptedException {
         drawScreen();
         while (true) {
             screen.clear();
@@ -45,25 +46,25 @@ public class GameCourt {
             switch (key.getKind()) {
                 case ArrowDown:
                     person.setY(person.getY() + 1);
-                    writer.drawString(person.getX(), person.getY(),"\u263A");
+                    writer.drawString(person.getX(), person.getY(), "\u263A");
                     drawMonster();
                     drawGoal();
                     break;
                 case ArrowUp:
                     person.setY(person.getY() - 1);
-                    writer.drawString(person.getX(), person.getY(),"\u263A");
+                    writer.drawString(person.getX(), person.getY(), "\u263A");
                     drawMonster();
                     drawGoal();
                     break;
                 case ArrowLeft:
                     person.setX(person.getX() - 1);
-                    writer.drawString(person.getX(), person.getY(),"\u263A");
+                    writer.drawString(person.getX(), person.getY(), "\u263A");
                     drawMonster();
                     drawGoal();
                     break;
                 case ArrowRight:
                     person.setX(person.getX() + 1);
-                    writer.drawString(person.getX(), person.getY(),"\u263A");
+                    writer.drawString(person.getX(), person.getY(), "\u263A");
                     drawMonster();
                     drawGoal();
                     break;
@@ -77,18 +78,21 @@ public class GameCourt {
 
         }
     }
+
     public void drawMonster() {
-        if(monster.getY() != person.getY())
+        if (monster.getY() != person.getY())
             monster.setY(monster.getY());
-        if(monster.getX() != person.getX())
+        if (monster.getX() != person.getX())
             monster.setX(monster.getX());
-        writer.drawString((int)monster.getX(), (int)monster.getY(),"\u2639");
+        writer.drawString((int) monster.getX(), (int) monster.getY(), "\u2639");
     }
 
     public void drawGoal() {
-        goal.setX(goal.getX());
-        goal.setY(goal.getY());
-        writer.drawString(goal.getX(), goal.getY(), "0");
+        if (goal.getY() != person.getY())
+            goal.setY(goal.getY());
+        if (goal.getX() != person.getX())
+            goal.setX(goal.getX());
+        writer.drawString((int) goal.getX(), (int) goal.getY(), "0");
     }
 
     public void drawBorder() {
@@ -100,14 +104,17 @@ public class GameCourt {
         writer.drawString(0, 23, "################################################################################");
         screen.refresh();
     }
-    public void collideGameOver(int x, int y, float x2,float y2) {
-        if(x == x2 && y == y2 || x == 0 || x == 79 || y == 0 || y == 23)
+
+    public void collideGameOver(int x, int y, float x2, float y2) {
+        if (x == x2 && y == y2 || x == 0 || x == 79 || y == 0 || y == 23)
             gameOver();
     }
-    public void collideWin(int x, int y, int x2,int y2) {
-        if(x == x2 && y == y2)
+
+    public void collideWin(int x, int y, float x2, float y2) {
+        if (x == x2 && y == y2)
             win();
     }
+
     public void gameOver() {
         screen.clear();
         drawBorder();
