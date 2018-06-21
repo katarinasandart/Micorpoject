@@ -22,6 +22,7 @@ public class GameCourt {
     Person person;
     Monster monster;
     Monster monster1;
+    Monster monster2;
     Goal goal;
 
     public void drawScreen() throws InterruptedException {
@@ -31,6 +32,7 @@ public class GameCourt {
         person = new Person();
         monster = new Monster(person);
         monster1 = new Monster(person);
+        monster2 = new Monster(person);
         goal = new Goal(person);
         screen.startScreen();
         writer = new ScreenWriter(screen);
@@ -55,24 +57,28 @@ public class GameCourt {
                     drawPerson(0);
                     drawMonster(monster);
                     drawMonster(monster1);
+                    drawMonster(monster2);
                     drawGoal();
                     break;
                 case ArrowUp:
                     drawPerson(1);
                     drawMonster(monster);
                     drawMonster(monster1);
+                    drawMonster(monster2);
                     drawGoal();
                     break;
                 case ArrowLeft:
                     drawPerson(2);
                     drawMonster(monster);
                     drawMonster(monster1);
+                    drawMonster(monster2);
                     drawGoal();
                     break;
                 case ArrowRight:
                     drawPerson(3);
                     drawMonster(monster);
                     drawMonster(monster1);
+                    drawMonster(monster2);
                     drawGoal();
                     break;
                 case Escape:
@@ -82,7 +88,6 @@ public class GameCourt {
             collideGameOver(person.getX(), person.getY(), monster.getX(), monster.getY());
             collideWin(person.getX(), person.getY(), goal.getX(), goal.getY());
             screen.refresh();
-
         }
     }
 
@@ -120,7 +125,7 @@ public class GameCourt {
             goal.setY(goal.getY());
         if (goal.getX() != person.getX())
             goal.setX(goal.getX());
-        writer.drawString((int) goal.getX(), (int) goal.getY(), "0");
+        writer.drawString((int) goal.getX(), (int) goal.getY(), "\u2764");
     }
 
     public void drawBorder() {
