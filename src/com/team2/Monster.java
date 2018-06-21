@@ -6,7 +6,6 @@ public class Monster {
     private int moveMin = -1;
     private int movePlus = 1;
     Person person;
-    GameCourt game;
 
 
     public Monster(Person person) {
