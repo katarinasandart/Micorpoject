@@ -78,8 +78,10 @@ public class GameCourt {
         }
     }
     public void drawMonster() {
-        monster.setX(monster.getX());
-        monster.setY(monster.getY());
+        if(monster.getY() != person.getY())
+            monster.setY(monster.getY());
+        if(monster.getX() != person.getX())
+            monster.setX(monster.getX());
         writer.drawString(monster.getX(), monster.getY(),"\u2639");
     }
 
