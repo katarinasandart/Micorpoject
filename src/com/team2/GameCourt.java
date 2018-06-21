@@ -31,6 +31,8 @@ public class GameCourt {
         writer = new ScreenWriter(screen);
         writer.drawString(person.getX(), person.getY(), "\u263A");
         drawBorder();
+
+        writer.setForegroundColor(Terminal.Color.CYAN);
     }
 
     public void movement() throws InterruptedException {
