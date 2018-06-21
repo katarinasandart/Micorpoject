@@ -117,7 +117,7 @@ public class GameCourt {
                 monster.setY(monster.getY());
             if (monster.getX() != person.getX())
                 monster.setX(monster.getX());
-            writer.drawString((int) monster.getX(), (int) monster.getY(), "\u2639");
+            writer.drawString((int) monster.getX(), (int) monster.getY(), "\u8546");
         }
     }
 
