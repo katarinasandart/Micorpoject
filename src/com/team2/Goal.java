@@ -30,14 +30,14 @@ public class Goal {
     public void setY(float y) {
         if (person.getY() <= getY() && getY() < 22)
             this.y = y + movePlus;
-        else if (getY() > 2)
+        else if (getY() > 1)
             this.y = y + moveMin;
     }
 
     public void setX(float x) {
         if (person.getX() <= getX() && getX() < 78)
             this.x = x + movePlus;
-        else if (getX() > 2)
+        else if (getX() > 1)
             this.x = x + moveMin;
     }
 }
