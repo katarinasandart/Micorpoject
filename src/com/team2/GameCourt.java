@@ -18,6 +18,7 @@ public class GameCourt {
     ScreenWriter writer;
     Person person;
     Monster monster;
+    Goal goal;
 
     public void drawScreen() throws InterruptedException {
 
@@ -25,6 +26,7 @@ public class GameCourt {
         screen = new Screen(terminal);
         person = new Person();
         monster = new Monster(person);
+        goal = new Goal(person);
         screen.startScreen();
         writer = new ScreenWriter(screen);
         writer.drawString(person.getX(), person.getY(),"\u263A");
@@ -45,21 +47,25 @@ public class GameCourt {
                     person.setY(person.getY() + 1);
                     writer.drawString(person.getX(), person.getY(),"\u263A");
                     drawMonster();
+                    drawGoal();
                     break;
                 case ArrowUp:
                     person.setY(person.getY() - 1);
                     writer.drawString(person.getX(), person.getY(),"\u263A");
                     drawMonster();
+                    drawGoal();
                     break;
                 case ArrowLeft:
                     person.setX(person.getX() - 1);
                     writer.drawString(person.getX(), person.getY(),"\u263A");
                     drawMonster();
+                    drawGoal();
                     break;
                 case ArrowRight:
                     person.setX(person.getX() + 1);
                     writer.drawString(person.getX(), person.getY(),"\u263A");
                     drawMonster();
+                    drawGoal();
                     break;
                 case Escape:
                     System.exit(0);
@@ -74,6 +80,12 @@ public class GameCourt {
         monster.setX(monster.getX());
         monster.setY(monster.getY());
         writer.drawString(monster.getX(), monster.getY(),"\u2639");
+    }
+
+    public void drawGoal(){
+        goal.setX(goal.getX());
+        goal.setY(goal.getY());
+        writer.drawString(goal.getX(), goal.getY(), "0");
     }
 
     public void drawBorder() {
