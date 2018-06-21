@@ -6,7 +6,6 @@ public class Goal {
     private int moveMin = -1;
     private int movePlus = 1;
     Person person;
-    GameCourt game;
 
 
     public Goal(Person person) {
@@ -25,16 +24,16 @@ public class Goal {
     }
 
     public void setY(int y) {
-        if (person.getY() <= getY())
+        if (person.getY() <= getY() && getY() < 22)
             this.y = y + movePlus;
-        else
+        else if (getY() > 1)
             this.y = y + moveMin;
     }
 
     public void setX(int x) {
-        if (person.getX() <= getX())
+        if (person.getX() <= getX() && getY() < 78)
             this.x = x + movePlus;
-        else
+        else if (getX() > 1)
             this.x = x + moveMin;
     }
 }
