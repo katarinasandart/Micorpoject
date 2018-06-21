@@ -1,4 +1,4 @@
-package com.team2;
+ package com.team2;
 
 public class Goal {
     public float x;
