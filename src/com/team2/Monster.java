@@ -9,7 +9,7 @@ public class Monster {
     GameCourt game;
 
 
-    public Monster(Person person){
+    public Monster(Person person) {
         this.x = 10;
         this.y = 2;
         this.person = person;
@@ -25,17 +25,16 @@ public class Monster {
     }
 
     public void setY(int y) {
-        if(person.getY() >= getY())
+        if (person.getY() >= getY())
             this.y = y + movePlus;
-        else
+        else if (getY() > 1)
             this.y = y + moveMin;
     }
 
     public void setX(int x) {
-
-        if(person.getX() >= getX())
+        if (person.getX() >= getX())
             this.x = x + movePlus;
-        else
+        else if (getX() > 1)
             this.x = x + moveMin;
     }
 }
