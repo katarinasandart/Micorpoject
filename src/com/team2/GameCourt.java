@@ -11,6 +11,7 @@ import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.TerminalSize;
 
 import java.nio.charset.Charset;
+import java.util.Random;
 
 import static com.googlecode.lanterna.input.Key.Kind.ArrowDown;
 
@@ -20,6 +21,7 @@ public class GameCourt {
     ScreenWriter writer;
     Person person;
     Monster monster;
+    Monster monster1;
     Goal goal;
 
     public void drawScreen() throws InterruptedException {
@@ -28,6 +30,7 @@ public class GameCourt {
         screen = new Screen(terminal);
         person = new Person();
         monster = new Monster(person);
+        monster1 = new Monster(person);
         goal = new Goal(person);
         screen.startScreen();
         writer = new ScreenWriter(screen);
@@ -50,22 +53,26 @@ public class GameCourt {
             switch (key.getKind()) {
                 case ArrowDown:
                     drawPerson(0);
-                    drawMonster();
+                    drawMonster(monster);
+                    drawMonster(monster1);
                     drawGoal();
                     break;
                 case ArrowUp:
                     drawPerson(1);
-                    drawMonster();
+                    drawMonster(monster);
+                    drawMonster(monster1);
                     drawGoal();
                     break;
                 case ArrowLeft:
                     drawPerson(2);
-                    drawMonster();
+                    drawMonster(monster);
+                    drawMonster(monster1);
                     drawGoal();
                     break;
                 case ArrowRight:
                     drawPerson(3);
-                    drawMonster();
+                    drawMonster(monster);
+                    drawMonster(monster1);
                     drawGoal();
                     break;
                 case Escape:
@@ -100,7 +107,7 @@ public class GameCourt {
         }
     }
 
-    public void drawMonster() {
+    public void drawMonster(Monster monster) {
         if (monster.getY() != person.getY())
             monster.setY(monster.getY());
         if (monster.getX() != person.getX())

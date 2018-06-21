@@ -1,16 +1,19 @@
 package com.team2;
 
+import java.util.Random;
+
 public class Monster {
     public float x;
     public float y;
     private float moveMin = -0.5f;
     private float movePlus = 0.5f;
     Person person;
+    Random random = new Random();
 
 
     public Monster(Person person) {
-        this.x = 10;
-        this.y = 2;
+        this.x = random.nextInt(78);
+        this.y = random.nextInt(22);
         this.person = person;
     }
 
