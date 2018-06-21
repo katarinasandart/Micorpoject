@@ -71,18 +71,21 @@ public class GameCourt {
                     System.exit(0);
             }
             drawBorder();
-            collide(person.getX(), person.getY(), monster.getX(), monster.getY());
+            collideGameOver(person.getX(), person.getY(), monster.getX(), monster.getY());
+            collideWin(person.getX(), person.getY(), goal.getX(), goal.getY());
             screen.refresh();
 
         }
     }
-    public void drawMonster(){
-        monster.setX(monster.getX());
-        monster.setY(monster.getY());
+    public void drawMonster() {
+        if(monster.getY() != person.getY())
+            monster.setY(monster.getY());
+        if(monster.getX() != person.getX())
+            monster.setX(monster.getX());
         writer.drawString(monster.getX(), monster.getY(),"\u2639");
     }
 
-    public void drawGoal(){
+    public void drawGoal() {
         goal.setX(goal.getX());
         goal.setY(goal.getY());
         writer.drawString(goal.getX(), goal.getY(), "0");
@@ -97,15 +100,27 @@ public class GameCourt {
         writer.drawString(0, 23, "################################################################################");
         screen.refresh();
     }
-    public void collide(int x, int y, int x2,int y2) {
+    public void collideGameOver(int x, int y, int x2,int y2) {
         if(x == x2 && y == y2 || x == 0 || x == 79 || y == 0 || y == 23)
             gameOver();
     }
-    public void gameOver(){
+    public void collideWin(int x, int y, int x2,int y2) {
+        if(x == x2 && y == y2)
+            win();
+    }
+    public void gameOver() {
         screen.clear();
         drawBorder();
         writer.drawString(20, 10, "##############################");
         writer.drawString(20, 11, "#         Game over!         #");
+        writer.drawString(20, 12, "##############################");
+    }
+
+    public void win() {
+        screen.clear();
+        drawBorder();
+        writer.drawString(20, 10, "##############################");
+        writer.drawString(20, 11, "#          You win!          #");
         writer.drawString(20, 12, "##############################");
     }
 }
